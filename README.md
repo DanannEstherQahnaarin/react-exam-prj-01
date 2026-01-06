@@ -42,6 +42,78 @@ npm run build
 npm run preview
 ```
 
+## Tailwind CSS 설치 및 설정
+
+이 프로젝트는 Tailwind CSS v3를 사용합니다.
+
+### 설치
+
+의존성 설치 시 Tailwind CSS가 자동으로 설치됩니다:
+
+```bash
+npm install
+```
+
+### 설정 파일
+
+프로젝트에는 다음 설정 파일이 포함되어 있습니다:
+
+- **`tailwind.config.js`**: Tailwind CSS 설정 파일
+- **`postcss.config.js`**: PostCSS 설정 파일 (Tailwind CSS와 Autoprefixer 포함)
+- **`src/index.css`**: Tailwind CSS 디렉티브가 포함된 메인 CSS 파일
+
+### 사용 방법
+
+컴포넌트에서 Tailwind CSS 유틸리티 클래스를 직접 사용할 수 있습니다:
+
+```tsx
+function App() {
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <h1 className="text-4xl font-bold text-blue-600">Hello Tailwind!</h1>
+    </div>
+  );
+}
+```
+
+### 새 프로젝트에 Tailwind CSS 추가하기
+
+새로운 프로젝트에 Tailwind CSS를 추가하려면:
+
+1. **패키지 설치**:
+   ```bash
+   npm install -D tailwindcss postcss autoprefixer
+   ```
+
+2. **설정 파일 생성**:
+   ```bash
+   npx tailwindcss init -p
+   ```
+
+3. **`tailwind.config.js` 설정**:
+   ```js
+   /** @type {import('tailwindcss').Config} */
+   export default {
+     content: [
+       "./index.html",
+       "./src/**/*.{js,ts,jsx,tsx}",
+     ],
+     theme: {
+       extend: {},
+     },
+     plugins: [],
+   }
+   ```
+
+4. **`src/index.css`에 Tailwind 디렉티브 추가**:
+   ```css
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
+   ```
+
+더 자세한 내용은 [Tailwind CSS 공식 문서](https://tailwindcss.com/docs)를 참고하세요.
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
