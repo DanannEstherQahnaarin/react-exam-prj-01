@@ -12,3 +12,9 @@
 >
 
 [프로젝트 설정 방법](INSTALL.md)
+
+TypeScript에서 JavaScript 파일을 import할 때는 다음이 필요합니다:
+확장자 명시: import 경로에 .js 확장자를 추가 (ex) import Button from './js/button.js'
+TypeScript 설정: tsconfig.app.json에 다음 옵션 추가
+allowJs: true - JavaScript 파일 import 허용
+checkJs: false - JavaScript 파일의 타입 체크 비활성화 (선택사항)

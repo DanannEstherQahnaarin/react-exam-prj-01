@@ -1,23 +1,37 @@
-import * as Gals from "./Gallerys";
+import Button from "./jsx/button.jsx";
+import * as Headers from "./jsx/header.jsx";
+import Image from "./jsx/image.jsx";
+import imageSrc from "./assets/image.png";
+
 
 export default function App() {
-  let name = "Hedy Lamarr";
-
   return (
-    <>
-      <h1>{name}'s Todos</h1>
-      
-      <Gals.Profile />
-      <ul
-        style={{
-          backgroundColor: "black",
-          color: "pink",
-        }}
-      >
-        <li>Invent new traffic lights</li>
-        <li>Rehearse a movie scene</li>
-        <li>Improve the spectrum technology</li>
-      </ul>
-    </>
+    <main className="main">
+
+      <section className="m-header">
+        <Headers.MainHeader content="Meet Guidebooks" />
+      </section>
+      <section className="s-header">
+        <Headers.SubHeader content="Discover hundreds of local spots recommended by Airbnb hosts" />
+      </section>
+      <section className="image-container">
+        <Image img={imageSrc} title="San Francisco" />
+        <Image img={imageSrc} title="New York" />
+        <Image img={imageSrc} title="London" />
+      </section>
+      <section className="item-align">
+        <Button content="See All Guidebooks" />
+      </section>
+      <section className="m-header">
+        <Headers.MainHeader content="Just for the weekend" />
+      </section>
+      <section className="s-header">
+        <Headers.SubHeader content="Discover new, inspiring places close to home" />
+      </section>
+      <section className="image-container"></section>
+      <section className="item-align">
+        <Button content="See All Destinations" />
+      </section>
+    </main>
   );
 }
