@@ -9,7 +9,8 @@
 3. [개발 서버 실행](#3-개발-서버-실행)
 4. [빌드 및 배포](#4-빌드-및-배포)
 5. [Tailwind CSS 설정](#5-tailwind-css-설정)
-6. [추가 설정](#6-추가-설정)
+6. [Styled Components 설정](#6-styled-components-설정)
+7. [추가 설정](#7-추가-설정)
 
 ---
 
@@ -47,6 +48,24 @@ npm install
 - Vite
 - Tailwind CSS
 - ESLint 및 관련 플러그인
+
+### 추가 패키지 설치
+
+프로젝트에서 추가로 필요한 패키지를 설치할 수 있습니다:
+
+#### Styled Components
+
+CSS-in-JS 스타일링을 위해 styled-components를 설치할 수 있습니다:
+
+```bash
+npm install styled-components
+```
+
+TypeScript를 사용하는 경우 타입 정의도 함께 설치하세요:
+
+```bash
+npm install -D @types/styled-components
+```
 
 ---
 
@@ -176,7 +195,153 @@ function App() {
 
 ---
 
-## 6. 추가 설정
+## 6. Styled Components 설정
+
+이 프로젝트에서 CSS-in-JS 스타일링을 위해 styled-components를 사용할 수 있습니다.
+
+### 설치
+
+프로젝트 루트 디렉토리에서 다음 명령어를 실행하세요:
+
+```bash
+npm install styled-components
+```
+
+TypeScript를 사용하는 경우 타입 정의도 함께 설치하세요:
+
+```bash
+npm install -D @types/styled-components
+```
+
+### 사용 방법
+
+컴포넌트에서 styled-components를 import하여 스타일드 컴포넌트를 생성할 수 있습니다:
+
+```tsx
+import styled from 'styled-components';
+
+const StyledButton = styled.button`
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+
+  &:hover {
+    background-color: #2563eb;
+  }
+
+  &:active {
+    background-color: #1d4ed8;
+  }
+`;
+
+function App() {
+  return (
+    <div>
+      <StyledButton>클릭하세요</StyledButton>
+    </div>
+  );
+}
+```
+
+### Props를 사용한 동적 스타일링
+
+Props를 사용하여 동적으로 스타일을 변경할 수 있습니다:
+
+```tsx
+import styled from 'styled-components';
+
+interface ButtonProps {
+  primary?: boolean;
+  size?: 'small' | 'medium' | 'large';
+}
+
+const StyledButton = styled.button<ButtonProps>`
+  background-color: ${props => props.primary ? '#3b82f6' : '#6b7280'};
+  color: white;
+  padding: ${props => {
+    if (props.size === 'small') return '0.25rem 0.5rem';
+    if (props.size === 'large') return '0.75rem 1.5rem';
+    return '0.5rem 1rem';
+  }};
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  font-size: ${props => {
+    if (props.size === 'small') return '0.875rem';
+    if (props.size === 'large') return '1.125rem';
+    return '1rem';
+  }};
+`;
+
+function App() {
+  return (
+    <div>
+      <StyledButton primary size="small">작은 버튼</StyledButton>
+      <StyledButton primary size="medium">중간 버튼</StyledButton>
+      <StyledButton size="large">큰 버튼</StyledButton>
+    </div>
+  );
+}
+```
+
+### 테마 사용하기
+
+ThemeProvider를 사용하여 전역 테마를 설정할 수 있습니다:
+
+```tsx
+import styled, { ThemeProvider } from 'styled-components';
+
+const theme = {
+  colors: {
+    primary: '#3b82f6',
+    secondary: '#6b7280',
+    success: '#10b981',
+    danger: '#ef4444',
+  },
+  spacing: {
+    small: '0.5rem',
+    medium: '1rem',
+    large: '1.5rem',
+  },
+};
+
+const StyledButton = styled.button`
+  background-color: ${props => props.theme.colors.primary};
+  color: white;
+  padding: ${props => props.theme.spacing.medium};
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+`;
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <StyledButton>테마 버튼</StyledButton>
+    </ThemeProvider>
+  );
+}
+```
+
+### CSS-in-JS vs Tailwind CSS
+
+이 프로젝트에서는 Tailwind CSS와 styled-components를 함께 사용할 수 있습니다. 각각의 장단점:
+
+- **Tailwind CSS**: 유틸리티 클래스 기반, 빠른 개발, 작은 번들 크기
+- **Styled Components**: 컴포넌트 기반, 동적 스타일링 용이, JavaScript와 통합
+
+프로젝트의 요구사항에 따라 적절한 스타일링 방법을 선택하거나 둘을 함께 사용할 수 있습니다.
+
+더 자세한 내용은 [Styled Components 공식 문서](https://styled-components.com/docs)를 참고하세요.
+
+---
+
+## 7. 추가 설정
 
 ### 환경 변수 설정
 
@@ -311,4 +476,5 @@ TypeScript 오류가 발생하면 다음을 확인하세요:
 - [React 공식 문서](https://react.dev)
 - [TypeScript 공식 문서](https://www.typescriptlang.org)
 - [Tailwind CSS 공식 문서](https://tailwindcss.com)
+- [Styled Components 공식 문서](https://styled-components.com/docs)
 - [ESLint 공식 문서](https://eslint.org)
