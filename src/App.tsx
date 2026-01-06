@@ -1,6 +1,6 @@
-import Button from "./jsx/button.jsx";
-import * as Headers from "./jsx/header.jsx";
-import Image from "./jsx/image.jsx";
+import Button from "./components/button.jsx";
+import * as Headers from "./components/header.jsx";
+import Image from "./components/image.jsx";
 import imageSrc from "./assets/image.png";
 
 
