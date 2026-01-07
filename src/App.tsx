@@ -1,7 +1,7 @@
 import * as Headers from "./components/header.jsx";
 import Button from "./components/button.jsx";
 import { ImageBox, ItemBox, ButtonBox } from "./components/container.jsx";
-import Image from "./components/image.jsx";
+import {Image, ImgDiv} from "./components/image.jsx";
 
 import imageSrc from "./assets/image.png";
 
@@ -15,9 +15,9 @@ export default function App() {
         <Headers.SubHeader content="Discover hundreds of local spots recommended by Airbnb hosts" />
       </ItemBox>
       <ImageBox>
-        <Image img={imageSrc} title="San Francisco" />
-        <Image img={imageSrc} title="New York" />
-        <Image img={imageSrc} title="London" />
+        <ImgDiv img={imageSrc} title="San Francisco" />
+        <ImgDiv img={imageSrc} title="New York" />
+        <ImgDiv img={imageSrc} title="London" />
       </ImageBox>
       <ButtonBox>
         <Button content="See All Guidebooks" />
@@ -29,9 +29,9 @@ export default function App() {
         <Headers.SubHeader content="Discover new, inspiring places close to home" />
       </ItemBox>
       <ImageBox>
-        <Image img={imageSrc} title="Napa" />
-        <Image img={imageSrc} title="Sonoma" />
-        <Image img={imageSrc} title="San Francisco" />
+        <ImgDiv img={imageSrc} title="Napa" />
+        <ImgDiv img={imageSrc} title="Sonoma" />
+        <ImgDiv img={imageSrc} title="San Francisco" />
       </ImageBox>
       <ButtonBox>
         <Button content="See All Destinations" />

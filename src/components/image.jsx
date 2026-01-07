@@ -13,6 +13,8 @@ const ImageBox = styled.img`
   display: block;
 `
 
+
+
 const ImageText = styled.div`
   position: absolute;
   top: 50%;
@@ -24,8 +26,28 @@ const ImageText = styled.div`
   text-shadow: 2px 2px 4px gray;
   pointer-events: none;
 `
+const ImageDiv = styled.div`
+  background: url(${props => props.img});
+  height: 200px;
+  background-size: cover;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 100px;
+  font-size: 1.3rem;
+`
 
-export default function Image({ img, title }) {
+export function ImgDiv({ img, title }){
+  return (
+    <ImageDiv img={img}>
+      <label>{title}</label>
+    </ImageDiv>
+  )
+}
+
+
+export function Image({ img, title }) {
   return (
     <ImageWrapper>
       <ImageBox src={img} />

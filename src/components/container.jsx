@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const ImageContainer = styled.div`
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
     column-gap: 10px;
 `
 
